@@ -1,1 +1,42 @@
 # Defaults tasks for role zabbix-proxy
+- name: Installing Zabbix packages
+  yum:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - zabbix-proxy-sqlite3
+    - zabbix-get
+ 
+- name: Directory to store sqlite3 db
+  file:
+    path: /var/lib/zabbix
+    state: directory
+    owner: zabbix
+    group: zabbix
+    setype: zabbix_var_lib_t
+
+- name: Configuring selinux
+  include_tasks: selinux.yml
+
+- name: Configuring zabbix proxy
+  template:
+    src: zabbix_proxy.conf.j2
+    dest: /etc/zabbix/zabbix_proxy.conf
+  notify: restart_zabbix_proxy
+ 
+- name: Ensuring Zabbix proxy is started
+  service:
+    name: zabbix-proxy
+    state: started
+    enabled: True          
+
+- name: Allowing src ip to reach zabbix proxy
+  include_role:
+    name: iptables
+    tasks_from: custom-policy-list
+  vars:
+    iptables_policy_name: zabbix-proxy
+    iptables_protocol: tcp
+    iptables_port: 10051
+    iptables_allowed_from: "{{ zabbix_iptables_from }}"
+

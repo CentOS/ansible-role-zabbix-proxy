@@ -1,1 +1,9 @@
 # Defaults variables for role zabbix-proxy
+# Which zabbix server is upstream for this proxy
+zabbix_proxy_upstream_server: zabbix.company.internal
+
+# Iptables settings
+# from which ip ranges/addresses we want to export tcp/10051 for zabbix server port
+zabbix_iptables_from:
+  - 0.0.0.0/0
+

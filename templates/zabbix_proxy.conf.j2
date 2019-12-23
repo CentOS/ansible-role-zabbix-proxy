@@ -1,0 +1,10 @@
+Server={{ zabbix_proxy_upstream_server }}
+Hostname={{ inventory_hostname }}
+PidFile=/var/run/zabbix/zabbix_proxy.pid
+LogFile=/var/log/zabbix/zabbix_proxy.log
+LogFileSize=0
+DBName=/var/lib/zabbix/zabbix-proxy.sqlite
+ConfigFrequency=300
+StartPollers=10
+CacheSize=32M
+
