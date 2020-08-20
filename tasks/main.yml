@@ -22,6 +22,7 @@
   template:
     src: zabbix_proxy.conf.j2
     dest: /etc/zabbix/zabbix_proxy.conf
+    mode: 0644
   notify: restart_zabbix_proxy
  
 - name: Ensuring Zabbix proxy is started
