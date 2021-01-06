@@ -1,11 +1,8 @@
 # Defaults tasks for role zabbix-proxy
 - name: Installing Zabbix packages
   yum:
-    name: "{{ item }}"
+    name: ['zabbix-proxy-sqlite3','zabbix-get']
     state: latest
-  with_items:
-    - zabbix-proxy-sqlite3
-    - zabbix-get
  
 - name: Directory to store sqlite3 db
   file:
@@ -41,3 +38,8 @@
     iptables_port: 10051
     iptables_allowed_from: "{{ zabbix_iptables_from }}"
 
+- name: Importing zabbix-cli task if enabled
+  include_role:
+    name: zabbix-server
+    tasks_from: cli
+  when: zabbix_proxy_cli 

@@ -7,3 +7,9 @@ zabbix_proxy_upstream_server: zabbix.company.internal
 zabbix_iptables_from:
   - 0.0.0.0/0
 
+# Do we want zabbix-cli feature on proxy (for delegation purposes)
+zabbix_proxy_cli: False
+zabbix_api_url: https://localhost.localdomain/zabbix
+zabbix_api_user: user
+zabbix_api_pass: pass
+
