@@ -1,6 +1,16 @@
 # Defaults variables for role zabbix-proxy
 # Which zabbix server is upstream for this proxy
 zabbix_proxy_upstream_server: zabbix.company.internal
+zabbix_proxy_cachesize: 64M
+zabbix_proxy_pollers: 20
+zabbix_proxy_config_freq: 300
+zabbix_proxy_historycachesize: 32M
+zabbix_proxy_historyindexcachesize: 16M
+zabbix_proxy_discoverers: 5
+zabbix_proxy_httppollers: 5
+zabbix_proxy_ipmipollers: 5
+zabbix_proxy_pingers: 5
+zabbix_proxy_trappers: 5
 
 # Iptables settings
 # from which ip ranges/addresses we want to export tcp/10051 for zabbix server port

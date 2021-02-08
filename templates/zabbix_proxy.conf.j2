@@ -4,7 +4,14 @@ PidFile=/var/run/zabbix/zabbix_proxy.pid
 LogFile=/var/log/zabbix/zabbix_proxy.log
 LogFileSize=0
 DBName=/var/lib/zabbix/zabbix-proxy.sqlite
-ConfigFrequency=300
-StartPollers=10
-CacheSize=32M
+ConfigFrequency={{ zabbix_proxy_config_freq }}
+StartPollers={{ zabbix_proxy_pollers }}
+CacheSize={{ zabbix_proxy_cachesize }}
+HistoryCacheSize={{ zabbix_proxy_historycachesize }}
+HistoryIndexCacheSize={{ zabbix_proxy_historyindexcachesize }}
+StartDiscoverers={{ zabbix_proxy_discoverers }}
+StartHTTPPollers={{ zabbix_proxy_httppollers }}
+StartIPMIPollers={{ zabbix_proxy_ipmipollers }}
+StartPingers={{ zabbix_proxy_pingers }}
+StartTrappers={{ zabbix_proxy_trappers }}
 
