@@ -1,6 +1,9 @@
 # Defaults variables for role zabbix-proxy
 # Which zabbix server is upstream for this proxy
 zabbix_proxy_upstream_server: zabbix.company.internal
+zabbix_proxy_hostname: "{{ inventory_hostname }}"
+
+# proxy tuning
 zabbix_proxy_cachesize: 64M
 zabbix_proxy_pollers: 20
 zabbix_proxy_config_freq: 300
@@ -11,6 +14,11 @@ zabbix_proxy_httppollers: 5
 zabbix_proxy_ipmipollers: 5
 zabbix_proxy_pingers: 5
 zabbix_proxy_trappers: 5
+
+# Do we want TLS with PSK for active proxies
+zabbix_proxy_tls: False
+zabbix_proxy_tls_psk:           # gen with `openssl rand -hex 32` and also known by zabbix server
+zabbix_proxy_tls_psk_identity:  # Whatever makes sense to you and known by zabbix server
 
 # Iptables settings
 # from which ip ranges/addresses we want to export tcp/10051 for zabbix server port

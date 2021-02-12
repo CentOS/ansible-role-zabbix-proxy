@@ -21,7 +21,17 @@
     dest: /etc/zabbix/zabbix_proxy.conf
     mode: 0644
   notify: restart_zabbix_proxy
- 
+
+- name: Distributing PSK file for TLS
+  template:
+    src: zabbix_proxy.psk.j2
+    dest: /etc/zabbix/zabbix_proxy.psk
+    owner: zabbix
+    group: zabbix
+    mode: 0640
+  notify: restart_zabbix_proxy
+  when: zabbix_proxy_tls
+
 - name: Ensuring Zabbix proxy is started
   service:
     name: zabbix-proxy

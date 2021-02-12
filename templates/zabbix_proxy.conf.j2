@@ -1,5 +1,5 @@
 Server={{ zabbix_proxy_upstream_server }}
-Hostname={{ inventory_hostname }}
+Hostname={{ zabbix_proxy_hostname }}
 PidFile=/var/run/zabbix/zabbix_proxy.pid
 LogFile=/var/log/zabbix/zabbix_proxy.log
 LogFileSize=0
@@ -14,4 +14,11 @@ StartHTTPPollers={{ zabbix_proxy_httppollers }}
 StartIPMIPollers={{ zabbix_proxy_ipmipollers }}
 StartPingers={{ zabbix_proxy_pingers }}
 StartTrappers={{ zabbix_proxy_trappers }}
+{% if zabbix_proxy_tls %}
+# Settings for TLS/PSK between Proxy and server
+TLSAccept=psk
+TLSConnect=psk
+TLSPSKIdentity={{ zabbix_proxy_tls_psk_identity }}
+TLSPSKFile=/etc/zabbix/zabbix_proxy.psk
+{% endif %}
 
