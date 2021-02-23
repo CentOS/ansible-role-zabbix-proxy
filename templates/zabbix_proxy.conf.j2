@@ -3,6 +3,7 @@ Hostname={{ zabbix_proxy_hostname }}
 PidFile=/var/run/zabbix/zabbix_proxy.pid
 LogFile=/var/log/zabbix/zabbix_proxy.log
 LogFileSize=0
+ExternalScripts=/usr/lib/zabbix/externalscripts
 DBName=/var/lib/zabbix/zabbix-proxy.sqlite
 ConfigFrequency={{ zabbix_proxy_config_freq }}
 StartPollers={{ zabbix_proxy_pollers }}

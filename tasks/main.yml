@@ -56,6 +56,13 @@
     iptables_port: 10051
     iptables_allowed_from: "{{ zabbix_iptables_from }}"
 
+- name: Importing zabbix server scripts
+  include_role:
+    name: zabbix-server
+    tasks_from: scripts
+  tags:
+    - scripts
+
 - name: Importing zabbix-cli task if enabled
   include_role:
     name: zabbix-server
