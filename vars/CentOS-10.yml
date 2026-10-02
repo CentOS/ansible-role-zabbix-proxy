@@ -1,0 +1,8 @@
+zabbix_cli_pkgs:
+  - zabbix-cli
+  - jq
+  - python3
+  - python3-pyzabbix
+  - python3-pyyaml
+
+
